@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{6BFF9C16-F04A-8503-BE69-B6D4EFB08E1C}") = "closingSlackBall002", "Assembly-CSharp.csproj", "{A5F5754E-2591-5588-2D8B-B5F9471B1087}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5F5754E-2591-5588-2D8B-B5F9471B1087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F5754E-2591-5588-2D8B-B5F9471B1087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F5754E-2591-5588-2D8B-B5F9471B1087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F5754E-2591-5588-2D8B-B5F9471B1087}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
