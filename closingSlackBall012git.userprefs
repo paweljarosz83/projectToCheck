@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\old\Player.cs">
+    <Files>
+      <File FileName="Assets\Scripts\GameController.cs" Line="9" Column="38" />
+      <File FileName="Assets\Scripts\old\Player.cs" Line="23" Column="41" />
+      <File FileName="Assets\Scripts\old\DestroyerPlatform.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\old\Jumping.cs" Line="21" Column="18" />
+      <File FileName="Assets\Scripts\old\ObjectPool.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\old\Platforma.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CameraMovement.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

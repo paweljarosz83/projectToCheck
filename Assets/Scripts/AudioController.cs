@@ -2,40 +2,36 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class AudioController : MonoBehaviour {
+public class AudioController : MonoBehaviour{
 
-	public int soundOn = 1;
-	public GameObject soundToggleButton;
+	public AudioSource jumpSound1;
 
 
-	void Start () {
+	/*
+	private static AudioController instance;
 
-		soundOn = PlayerPrefs.GetInt ("soundOn");
-
-		if (soundOn == 1) {
-			soundToggleButton.GetComponent<Toggle> ().isOn = true;
-			AudioListener.pause = false;
+	void Awake (){
+		if (instance == null) {
+			instance = this;
 		} else {
-			soundToggleButton.GetComponent<Toggle> ().isOn = false;
-			AudioListener.pause = true;
+			Destroy (this.gameObject);
+		}
+		DontDestroyOnLoad (this);
+	}
+	*/
+
+	public void playJumpingSound (int force){
+		if (force <= 300) {
+			jumpSound1.Play ();
+		} else {
+			jumpSound1.Play ();
 		}
 	}
-
-	public void toggleSound(){
-			if (soundOn == 1) {
-				soundOn=0;
-				PlayerPrefs.SetInt ("soundOn",0);
-				AudioListener.pause = true;
-			}
-			if (soundOn == 0) {
-				soundOn = 1;
-				PlayerPrefs.SetInt ("soundOn",1);
-				AudioListener.pause = false;
-			}
-		}
-
-	public void playJumpingSound(int force){
-
+	public static void disableSounds(){
+		AudioListener.pause = true;
+	}
+	public static void enableSounds(){
+		AudioListener.pause = false;
 	}
 }
 

@@ -1,52 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using GoogleMobileAds.Api;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject helpPanel;
-	public GameObject settingsPanel;
+	//private static GameController instance;
+
+	public AdsController adsController;
+
+	public CameraMovement cameraMovement;
+
+	public GameObject restartButton;
+	public GameObject pauseButton;
+	public GameObject score;
+	public GameObject scoreLabel;
 
 	public GameObject pausePanel;
 	public GameObject gameOverPanel;
 
+	//private BannerView bannerView;
 
+	void Awake(){
 
-	public void showHelpPanel(){
-		helpPanel.SetActive (true);
+	
+		adsController = GameObject.FindObjectOfType(typeof(AdsController)) as AdsController;
+		adsController.hideBanner ();
+		Time.timeScale = 1;
+		//adsController.showBanner ();
+		/*
+		if (instance==null) {
+			DontDestroyOnLoad(gameObject);
+			instance = this;
+		} else {
+			Destroy (gameObject);
+		}
+		*/
+
 	}
 
-	public void hideHelpPanel(){
-		helpPanel.SetActive (false);
-	}
-
-
-	public void showSettingsPanel(){
-		
-		settingsPanel.SetActive (true);
-	}
-
-	public void hideSettingsPanel(){
-
-		settingsPanel.SetActive (false);
-	}
-
-
-	void Awake() {
-		DontDestroyOnLoad(transform.gameObject);
-	}
-
+	
 
 		
 	void Start () {
+		Debug.Log ("start"+adsController);
 
-		if (helpPanel != null) {
-			helpPanel.SetActive (false);
-		}
-
-		if (settingsPanel != null) {
-			settingsPanel.SetActive (false);
-		}
-	
 		if (pausePanel != null) {
 			pausePanel.SetActive (false);
 		}
@@ -57,25 +55,95 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void pauseTheGame(){
-		pausePanel.SetActive (true);
+
+		adsController.showBanner ();
+		
+		if (pausePanel != null) {
+			pausePanel.SetActive (true);
+		}
+		Time.timeScale = 0;
+
+		hideGameButtonsAndScore ();
 	}
 
 	public void resumeTheGame(){
-		pausePanel.SetActive (false);
+
+		adsController.hideBanner ();
+		
+		if (pausePanel != null) {
+			pausePanel.SetActive (false);
+		}
+		Time.timeScale = 1;
+
+		showGameButtonsAndScore ();
 	}
 
-	public void rateTheGame(){
-		Application.OpenURL ("market://details?id=com.slackballgame");
+	public void gameOver(){
+
+		adsController.showBanner ();
+
+		if (gameOverPanel != null) {
+			gameOverPanel.SetActive (true);
+		}
+
+		Time.timeScale = 0;
+
+		hideGameButtonsAndScore ();
 	}
 
-	public void buyTheGame(){
-		Application.OpenURL ("market://details?id=com.slackballgame");
+
+
+	public void reload(){
+		//MainController.SwitchScene ("game");
+		//SceneManager.LoadScene ("game");
+		//Debug.Log ("play the game");
+		//resumeTheGame ();
+
+		adsController.hideBanner ();
+		MainController.SwitchScene ("game");
+
+		//pausePanel.SetActive (false);
 	}
 
-	public void playTheGame(){
-		Application.LoadLevel(1);
-	}
 	public void backToLobby(){
-		Application.LoadLevel(0);
+		adsController.showBanner ();
+		MainController.SwitchScene ("lobby");
+
+	}
+		
+	public void stopCameraFollow(){
+		cameraMovement.follow = false;
+	}
+		
+	private void hideGameButtonsAndScore(){
+
+		if (restartButton != null) {
+			restartButton.SetActive (false);
+		}
+		if (pauseButton != null) {
+			pauseButton.SetActive (false);
+		}
+		if (score != null) {
+			score.SetActive (false);
+		}
+		if (scoreLabel != null) {
+			scoreLabel.SetActive (false);
+		}
+	}
+
+	private void showGameButtonsAndScore(){
+
+		if (restartButton != null) {
+			restartButton.SetActive (true);
+		}
+		if (pauseButton != null) {
+			pauseButton.SetActive (true);
+		}
+		if (score != null) {
+			score.SetActive (true);
+		}
+		if (scoreLabel != null) {
+			scoreLabel.SetActive (true);
+		}
 	}
 }
